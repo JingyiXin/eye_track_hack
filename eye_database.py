@@ -65,8 +65,9 @@ def delete_user(name):
     print("delet")
 
 if __name__ == '__main__':
+    init_mongo_db()
     app.run()
-#     init_mongo_db()
+
 # #    add_new_user("Jenny", 20, True)
 # #    add_new_user("Sam", 10, False)
 

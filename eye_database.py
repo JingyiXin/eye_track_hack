@@ -24,7 +24,8 @@ def new_user():
     in_data = request.get_json()
     driver = add_new_user(in_data["username"],
                           in_data["time_blinking"],
-                          in_data["too_sleepy"])
+                          in_data["too_sleepy"],
+                          in_data["time_passed"])
     return "Added patient {}".format(driver.username)
 
 

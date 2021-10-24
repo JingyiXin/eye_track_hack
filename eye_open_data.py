@@ -1,6 +1,11 @@
 import socket
 import struct
 import requests
+import time
+
+
+start = time.time()
+
 
 rec_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 rec_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -13,8 +18,11 @@ while True:
     too_sleepy = False
     if value < 0.27:
         too_sleepy = True
-    driver = {"username": "Bob", "time_blinking": value, "too_sleepy": False}
-    r = requests.post("http://vcm-23122.vm.duke.edu:5000/new_user",
+    now = time.time()
+    time_passed = now - start
+    driver = {"username": "Bob", "time_blinking": value, "too_sleepy": False,
+              "time_passed": time_passed}
+    r = requests.post("http://localhost:5000/new_user",
                       json=driver)
     print(r.status_code)
     print(r.text)

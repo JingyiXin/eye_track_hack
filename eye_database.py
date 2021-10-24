@@ -17,6 +17,7 @@ class User(MongoModel):
     username = fields.CharField()
     time_blinking = fields.FloatField()
     too_sleepy = fields.BooleanField()
+    time_passed = fields.FloatField()
 
 
 @app.route("/new_user", methods=['POST'])

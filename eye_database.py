@@ -29,10 +29,12 @@ def new_user():
     return "Added patient {}".format(driver.username)
 
 
-def add_new_user(username_arg, time_blinking_arg, too_sleepy_arg):
+def add_new_user(username_arg, time_blinking_arg, too_sleepy_arg,
+                 time_passed_arg):
     u = User(username=username_arg,
              time_blinking=time_blinking_arg,
-             too_sleepy=too_sleepy_arg)
+             too_sleepy=too_sleepy_arg,
+             time_passed=time_passed_arg)
     u.save()
     return u
 

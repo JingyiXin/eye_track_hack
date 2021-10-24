@@ -52,7 +52,7 @@ def get_user_time_blinking():
 @app.route("/blink/<username>", methods=["GET"])
 def get_user_time_blinking2(username):
     time_blinking = get_time_blinking(username)
-    return "{} closed your eyes {} min/hour".format(username, time_blinking)
+    return "{} closed their eyes {} min/hour".format(username, time_blinking)
 
 
 def get_time_blinking(name):

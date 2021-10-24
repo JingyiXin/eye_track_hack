@@ -6,3 +6,9 @@ dependencies:
   - opencv=3
   - imutils
   - dlib
+  - pytest
+  - pytest-pycodestyle
+  - requests
+  - flask
+  - dnspython
+  - pymodm

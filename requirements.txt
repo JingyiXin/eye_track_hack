@@ -1,6 +1,0 @@
-pytest
-pytest-pycodestyle
-requests
-flask
-dnspython
-pymodm

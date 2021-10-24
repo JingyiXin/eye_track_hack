@@ -49,6 +49,12 @@ def get_user_time_blinking():
     return jsonify(time_blinking)
 
 
+@app.route("/blink/<username>", methods=["GET"])
+def get_user_time_blinking2(username):
+    time_blinking = get_time_blinking(username)
+    return "{} closed your eyes {} min/hour".format(username, time_blinking)
+
+
 def get_time_blinking(name):
     driver = User.objects.raw({"username": name}).first()
     return driver.time_blinking
@@ -59,6 +65,15 @@ def get_user_sleepiness():
     in_data = request.get_json()
     too_sleepy = get_sleepiness(in_data)
     return jsonify(too_sleepy)
+
+
+@app.route("/sleepy/<username>", methods=["GET"])
+def get_user_sleepiness2(username):
+    too_sleepy = get_sleepiness(username)
+    if too_sleepy is True:
+        return "{} is too sleepy".format(username)
+    else:
+        return "{} is not too sleepy".format(username)
 
 
 def get_sleepiness(name):
@@ -75,11 +90,3 @@ def delete_user(name):
 if __name__ == '__main__':
     init_mongo_db()
     app.run(host="0.0.0.0")
-
-# #    add_new_user("Jenny", 20, True)
-# #    add_new_user("Sam", 10, False)
-
-#     get_time_blinking("Jenny")
-#     get_sleepy_users()
-#     delete_user("Sam")
-#     get_all_users()

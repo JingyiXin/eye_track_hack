@@ -46,23 +46,31 @@ def get_all_users():
 def get_user_time_blinking():
     in_data = request.get_json()
     time_blinking = get_time_blinking(in_data)
-    return "Eyes closed {} min/hour".format(time_blinking)
+    return jsonify(time_blinking)
+
 
 def get_time_blinking(name):
     driver = User.objects.raw({"username": name}).first()
     return driver.time_blinking
     
 
-#This only gets the first sleepy user rn unfortunately:(    
-def get_sleepy_users():
-    results = User.objects.raw({"too_sleepy": True}).first()
-    print(results.username)
+@app.route("/sleepy", methods=["GET"])
+def get_user_sleepiness():
+    in_data = request.get_json()
+    too_sleepy = get_sleepiness(in_data)
+    return jsonify(too_sleepy)
+
+
+def get_sleepiness(name):
+    driver = User.objects.raw({"username": name}).first()
+    return driver.too_sleepy
 
 
 def delete_user(name):
     x = User.objects.raw({"username": name}).first()
     x.delete()
     print("delet")
+
 
 if __name__ == '__main__':
     init_mongo_db()

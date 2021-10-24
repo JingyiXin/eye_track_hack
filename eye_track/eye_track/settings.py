@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,15 @@ WSGI_APPLICATION = 'eye_track.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'eye-track-hack',
+        'ENFORCE_SCHEMA': False,
+        'USER': 'jingyixin',
+        'PASSWORD': 'jJdm2013',
+        'CLIENT': {
+            'host': "mongodb+srv://jingyixin:jJdm2013@cluster-eye-tracking.twess.mongodb.net/eye-track-hack?retryWrites=true&w=majority",
+            'port': 6000,
+        }
     }
 }
 

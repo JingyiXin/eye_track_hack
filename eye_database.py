@@ -66,7 +66,7 @@ def delete_user(name):
 
 if __name__ == '__main__':
     init_mongo_db()
-    app.run()
+    app.run(host="0.0.0.0")
 
 # #    add_new_user("Jenny", 20, True)
 # #    add_new_user("Sam", 10, False)
